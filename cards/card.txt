@@ -1,0 +1,763 @@
+1 Back of the couch
+You found some fluff under the cushions
+Value: 1 point
+
+2 Greedy
+Draw two cards from the pile
+Value: 3 points
+
+3 Giant slayer
+Pick a player to target. They have to give you their card with the highest point value
+Value: 6 points
+
+4 Cloak of Invisibility
+While this card is in your hand, none of your cards can be stolen or discovered.
+Value: 5 points
+
+5 Spyglass
+Choose a player to target.  They must tell you all the cards in their hand.
+Value: 4 points
+
+6 Pot of gold
+You reached the end of the rainbow.  
+Value: 20 points
+
+7 Blacksmith
+While this card is in your hand, once a turn you can convert one of your cards into a sword. Gain 20-3*number of sword cards in hand points.
+Value: 0 points
+
+8 Sword
+Challenge a player to a duel! If they have no sword card, they get instantly executed and you take 3 of their cards (or all of them if they have less than 3).
+If they have a sword, each play a card.  The player to play the higher-valued card wins the duel and gains 7 points.  The loser loses 7 points.
+Value: 0 points
+
+9 Sword
+Challenge a player to a duel! If they have no sword card, they get instantly executed and you take 3 of their cards (or all of them if they have less than 3).
+If they have a sword, each play a card.  The player to play the higher-valued card wins the duel and gains 7 points.  The loser loses 7 points.
+Value: 0 points
+
+10  Sword
+Challenge a player to a duel! If they have no sword card, they get instantly executed and you take 3 of their cards (or all of them if they have less than 3).
+If they have a sword, each play a card.  The player to play the higher-valued card wins the duel and gains 7 points.  The loser loses 7 points.
+Value: 0 points
+
+11  Sword
+Challenge a player to a duel! If they have no sword card, they get instantly executed and you take 3 of their cards (or all of them if they have less than 3).
+If they have a sword, each play a card.  The player to play the higher-valued card wins the duel and gains 7 points.  The loser loses 7 points.
+Value: 0 points
+
+12  Sword
+Challenge a player to a duel! If they have no sword card, they get instantly executed and you take 3 of their cards (or all of them if they have less than 3).
+If they have a sword, each play a card.  The player to play the higher-valued card wins the duel and gains 7 points.  The loser loses 7 points.
+Value: 0 points
+
+13 Tornado
+In the confusion, all your cards get blown away.  When you play this card, replace all the other cards in your hand (you get no points for playing the other cards).
+Value: -1 point
+
+14 Robber
+Take a card from someone else
+Value: 4 points
+
+15 Gallant knight
+When you play this card, everyone else gains 3 points
+Value: 5 points
+16 Plastic surgery
+Upgrade the Value: of all the cards in your hand by 2 points
+Value: -5
+
+17 Botched plastic surgery
+When you play this card, all the cards in your hand lose 2 points of value
+Value: 7
+
+18 Christmas
+There’s goodies under the tree
+Value: 10 points
+
+19 Glass of water
+Ahhh so hydrated…
+Value: 1 point
+
+20 Oh shucks
+It’s ok, you didn’t need your left arm anyway, right?
+Value: -12 points
+
+21 Flurry
+Play up to four cards at once on your next turn, and replace them all
+Value: -3 points
+
+22 Fireball
+Pick a target to take fire damage on the next turn.  They will lose any cards representing wooden or flammable things.  Other players can vote to decide if something is wooden, if necessary.
+Value: 5 points
+
+23 Wooden sword
+Hit someone for 1 card damage (they lose a card to the discard pile)
+Value: 2 points
+
+24 Drowning
+The next player must draw 4 cards every turn, and lose 8 points every turn, until they draw a card with a title starting with a vowel, a “B” or a “K”
+Value: -5 points
+
+25 Pain in the bum
+This card spontaneously regenerates in your hand every time you play it.
+Value: -10 points
+
+26 Dolphin powers
+You can swim!  And balance things on your nose.  Neutralises any card that would otherwise land someone in trouble with water (Eg drowning).
+Value: 7 points
+
+27 Passport
+Away you go to a faraway land… it’s backwards land and the next card you play will be worth negative points if it has positive value, and positive points if it has negative value.
+Value: 4 points
+
+28 Coffee
+You’re feeling hyper… take an extra turn after every other player for one round of play
+Value: 4 points
+
+29 Falling piano
+You are now a splat.  Lose all your cards.  You are allowed to draw one card per turn without playing a card until you have 5.
+Value: 33 bec it’s hilarious
+
+30 The kitchen sink 
+ You  found the soap
+Value: 7 points 
+
+31 Dog Kennel 
+You got attacked by a dog 
+Value: -6
+
+32 Zombies  
+Coming after your blood 
+Challenge a player to death  
+Value: 10 points
+
+33 Samurai Man
+Dismember your enemy!!
+Value: 5 points
+
+35 The Snow Demon
+A very tall figure emerges from the blizzard to face your opponents…
+Value: 10 points
+
+36 The Dragon’s Egg
+A highly sought after magical item
+Value: 12 points
+
+37 Supercomputer
+Uses AI to create a new random card (draw one card) and while it also mines bitcoin for you. Double your current points
+Value: 0
+
+38 Super powers 
+Gain a point every time someone steals from you 
+Value: 1  points 
+
+39 Extremely Powerful Fire Demon
+Heats water for baths and allows you to cook a yummy breakfast
+Value: 10 points
+
+40 Miscellaneous crumbs in Merlin’s beard
+Who knows what that is, or how long it’s been there… gain points to the value of a 20-sided dice roll
+Value: 0
+
+41 Sleepy Tea
+You feel very relaxed… miss one turn
+Value: 1 point
+
+42 Ice Powers
+You spontaneously manifest power over ice in your time of greatest need.  Counteracts effects of lava
+Value: 5 points
+
+43 Brothers bedroom 
+Lost in his sheets 
+Value: -2 points
+
+44 World of chocolate 
+Draw 2 cards
+Value: 60 points 
+
+45 My name is Inigo Montoya
+You killed my father, prepare to DIE!
+Value: 20 points
+
+46 Take a break
+It’s time for a well earned holiday.  You can choose one card to discard
+Value: 3 points
+
+47 Hula Hoop
+Round and round… everyone passes one card to the player on their left
+Value: 1 point
+
+48 I don’t believe in Santa
+You’re not a kid anymore
+Value: -10 points
+
+49 Lucky day
+You’re walking down the street and find a 5 cent coin on the ground, granting you good luck for the day
+Value: 5 points
+
+50 Master Sleuth
+Your keen investigative skills and perception ensure you never miss a clue.  Pick two random cards from another player and add them to your hand
+Value: 1 point
+
+51 The pickpocket
+Deft fingers earn you a living, but watch out for police…
+Value: 10 points
+
+52 Police
+Play immediately if a pickpocket is played (or rob the bank or steal a car), you caught the thief red handed!
+The player that used the criminal card loses 10 points
+Value: 10 points
+
+53 Sniffer dog
+If any player has a pickpocket, they must reveal it as it cannot fool this keen nose!
+Value: 2 points
+
+54 Annoying sibling
+They bring you some yummy food they pinched from the kitchen but they also pinch your arm and give you a bruise
+Value: -1 point
+
+55 Stuck in bed 
+You cant be stuffed getting out of bed 
+Value: -3 points
+
+56 School Church 
+Sing the school song 
+Value: 3 points 
+
+57 Steal best friends favourite top
+Make them give it you for 2 points 
+Value: 2 points
+
+58 Steal a car from your best friend 
+Get in and run away 
+Value: 2 points 
+
+59 Steal your friends mums car
+Get caught by the police and got fined 
+Value: -2 points
+
+60 Rob the bank 
+Steal money from the atm and not get caught 
+Value: 5 points
+
+61 Portal
+*4 of these in the starting deck
+You pass through a doorway to another world where the floor is lava
+*Neutralises drowning as all the water vaporises* 
+-1 point per round until another of these is played or you manifest ice powers
+Value: 0
+
+62 Portal
+*4 of these in the starting deck
+You pass through a doorway to another world where the floor is lava
+*Neutralises drowning as all the water vaporises* 
+-1 point per round until another of these is played or you manifest ice powers
+Value: 0
+
+63 Portal
+*4 of these in the starting deck
+You pass through a doorway to another world where the floor is lava
+*Neutralises drowning as all the water vaporises* 
+-1 point per round until another of these is played or you manifest ice powers
+Value: 0
+
+64 Portal
+*4 of these in the starting deck
+You pass through a doorway to another world where the floor is lava
+*Neutralises drowning as all the water vaporises* 
+-1 point per round until another of these is played or you manifest ice powers
+Value: 0
+
+65 Rickety chair
+*3 in deck*
+Gratuitous wooden thing
+Value: 1 point
+
+66 Rickety chair
+*3 in deck*
+Gratuitous wooden thing
+Value: 1 point
+
+67 Rickety chair
+*3 in deck*
+Gratuitous wooden thing
+Value: 1 point
+
+68 More greedy
+Draw two cards from the pile
+Value: 3 points
+
+69 More greedy
+Draw two cards from the pile
+Value: 3 points
+
+70 More greedy
+Draw two cards from the pile
+Value: 3 points
+
+71 More greedy
+Draw two cards from the pile
+Value: 3 points
+
+72 Very greedy
+Draw 5 cards from the pile
+Value: -6 points
+
+73 Break A leg
+Fall down the stairs
+Value: -25 points  
+
+74 Gun
+If someone plays a sword against you, shoot them.  They automatically lose the 7 points. PS you don’t have to give away 3 cards.  Discard after 1 defense
+Value: -3
+
+75 Gun
+If someone plays a sword against you, shoot them.  They automatically lose the 7 points. PS you don’t have to give away 3 cards.  Discard after 1 defense
+Value: -3
+
+76 Nuke
+Everyone loses points equal to 10*the number of cards in their hand
+Value: 1 point
+
+77 Jump of a building with an enemy friend but they die not you ( Adriana die )
+If you fall of a building you get everything of theirs 
+Value: -2 points 
+
+78 Ice machine
+Generate 1 ice powers card per turn, for up to 3 turns, until played.  Replaces a card in your hand of your choice.
+Value: 6 points
+
+79 Tribble
+The tribble splits into two tribbles, give one to a friend
+Assign a number between 1 and 100 to everyone who has one. Every turn the dice is rolled, until it lands on someone with the number. Their tribble explodes and they lose all their points. Everyone else’s tribbles no longer work and must be discarded. 
+Value: 20 points
+
+80 Lava Boat
+If you play this under the effects of Portal (61-64), you find a boat and sail through the lava river all the way to backwards land (see 27), except you stay there until lava gets cancelled (NB someone else can cancel it for you with ice, also the boat is wooden)
+Value: -3
+
+81 Bank account glitch
+Change one digit on any card in your hand
+Value: -1 points
+
+82 Confused
+Your friend thinks the boat is a dog but its a cat
+Value: 30 points from the person who is wrong Emma Herbold )
+
+83 Dictator
+Pick which card your target plays next OR play simultaneously with no.76 Nuke to lose flat 30 points.
+Value: -3 points
+
+84 Garden spade
+You dig a tunnel under your garden and hide there eating dirt.  Gain 2 points per turn, not playing or using any other cards, until you choose to re-emerge.  While you are in the tunnel, you are immune to physical/weapon attacks.
+Value: 2 points
+
+85 Demon Snatcher
+If someone else plays no.39 Extremely Powerful Fire Demon, pick it up from the discard pile and add it to your hand.
+Value: 10
+
+86 Sticky net
+You throw a net of sticky spider silk at another player.  They are stuck and lose 1 point per turn until they can play a card worth at least 8 points.
+Value: 5 points
+
+87 Rocket
+You fly to the moon, where gravity is weaker and you only get half points for any card you play (any effects are halved too). You are very far away.  Nobody can play a physical attack against you (eg fireball, sword, nuke) unless they are on the moon too.  To leave the moon, play another Rocket card, or Portal, or Time Travel.
+Value: 10
+
+88 Rocket
+You fly to the moon, where gravity is weaker and you only get half points for any card you play (any effects are halved too). You are very far away.  Nobody can play a physical attack against you (eg fireball, sword, nuke) unless they are on the moon too.  To leave the moon, play another Rocket card, or Portal, or Time Travel.
+Value: 10
+
+89 Rocket
+You fly to the moon, where gravity is weaker and you only get half points for any card you play (any effects are halved too). You are very far away.  Nobody can play a physical attack against you (eg fireball, sword, nuke) unless they are on the moon too.  To leave the moon, play another Rocket card, or Portal, or Time Travel.
+Value: 10
+
+90 Rickety master
+Collect more than 3 rickety chairs as collectable items, use them all at once, gain as many points as you have chairs
+Value: 0
+
+91 Holly’s lucky star
+Swap all cards in your hand for the cards in Holly’s hand. Limited to the amount of cards she has. Numbers must match, if you have more cards you can choose your own to swap.
+Value: 1
+
+92 Archery
+Zip! You fire an arrow into another player.  They lose 2 points.
+Value: 3
+
+93 More arrows
+Play simultaneously with no.92 Archery to fire 3 more arrows in the same move.
+Value: -2
+
+94 Shield 
+Neutralise any effects card played at/against you.  Play immediately after the intended effect card as a bonus turn, and discard 1 positive-valued card.  (If you have no positive-valued cards, you cannot use this to neutralise effects.)
+Value: 0 points
+
+95 Gettin married
+Pick another player, any time one of you gets points, round down to an even number and split them between you halvsies -for the next three rounds.
+Value: 1 point
+
+96 Officiate
+Force two players to “get married” on the spot. Same rules as marriage apply; any time one of you gets points, round down to an even number and split them between you halvsies
+Value: -6
+
+97 Stonks
+You bought shares! Pick up to three other players.  After 6 turns, add 1/3 of each chosen players score to your point total.
+Value: -16 points
+
+98 Wizard
+You can cast spells!
+Play simultaneously with any effect card to double its strength, and discard one positive-valued card 
+Value: 5 points
+
+99 Time Travel 
+Travel to anywhere to gain points.
+Value: 24 points 
+
+100 Dice Roll
+Roll a dice and times the number by 2 and whatever the score is thats how many points you get. 
+Value: 1 point
+
+101 Crystal Ball
+You can peek at the next three cards in the deck.
+Value: 4 points
+
+102 Card Mage
+You can take one card that gets played in the next round, and add it to your hand
+Value: -3 points
+
+103 Professional mattress tester
+You own a mattress shop...ahh so much nice sleep all day long…
+Value: 100 points
+
+104 Professional mattress trampolining tester troupe
+They have entered your shop and ruined all the mattresses by bouncing on them…
+Value: -100 points
+
+105 More Archery
+Zip! You fire an arrow into another player.  They lose 2 points.
+Value: 3
+
+106 More Archery
+Zip! You fire an arrow into another player.  They lose 2 points.
+Value: 3
+
+107 More Archery
+Zip! You fire an arrow into another player.  They lose 2 points.
+Value: 3
+
+108 More Archery
+Zip! You fire an arrow into another player.  They lose 2 points.
+Value: 3
+
+109 I hate Zoom
+It’s like having Ditto’s internet….it’s died again :(
+Value: -5 points every 2 turns forever
+
+110 Annoying goblin
+An annoying goblin appears and steals 2 points per round. Roll a 6 sided dice, must get 1 or 2 to get rid of him.
+Value: 2 per round
+
+111 Candle swallowing
+You take up a strange new hobby. Wax coats your throat, you are safe from any attacks for the next two rounds, but on your third round, you will lose 5 times whatever damage you dealt during those two rounds.
+Value: 0
+
+112 Distracted!
+You are distracted by your phone, skip your next turn. Upon drawing card, you must play this card immediately. 
+Value: 0 
+
+113 Pizza
+Nicole appears out of nowhere with pizza, you are jealous.
+Value: -10 points
+
+114 Metal allergy
+Your doctor tells you that you are allergic to metal. Anytime you pick up a metal object - such as a sword or arrow - you will feel your skin tingle. Lose 5 points for each. 
+Value: 0
+
+115 What game is this again?!
+If this card shows up, all players must immediately roll initiative on a D20. Highest number steals all of the lowest numbers points. This includes negative points. 
+Value: 0 points
+
+116 Round house kick!
+You get to fight another player. If they do not have a “round house kick” card, they automatically lose, and you take half their points. If they do, you must roll a 6 sided dice, and the higher number takes half the other’s points. If you roll the same number, neither win. 
+Value: 1 point
+
+117 Round house kick!
+You get to fight another player. If they do not have a “round house kick” card, they automatically lose, and you take half their points. If they do, you must roll a 6 sided dice, and the higher number takes half the other’s points. If you roll the same number, neither win. 
+Value: 1 point
+
+118 Round house kick!
+You get to fight another player. If they do not have a “round house kick” card, they automatically lose, and you take half their points. If they do, you must roll a 6 sided dice, and the higher number takes half the other’s points. If you roll the same number, neither win. 
+Value: 1 point
+
+119 Round house kick!
+You get to fight another player. If they do not have a “round house kick” card, they automatically lose, and you take half their points. If they do, you must roll a 6 sided dice, and the higher number takes half the other’s points. If you roll the same number, neither win. 
+Value: 1 point
+
+120 Round house kick!
+You get to fight another player. If they do not have a “round house kick” card, they automatically lose, and you take half their points. If they do, you must roll a 6 sided dice, and the higher number takes half the other’s points. If you roll the same number, neither win. 
+Value: 1 point
+
+121 The restaurant at the end of the universe
+The game ends suddenly as soon as this card appears in anyone’s deck. You are all going on a trip to the restaurant at the end of the universe for lunch, enjoy!
+Value: 1 point
+
+122 router fixed
+The only way to fix Ditto’s internet and invalidate card 109, receive 1 card for every turn 109 was activated - a poor consolation prize
+Value: 1 point
+
+123 breaking Hollys foot with a roundhouse
+Yes. She kicked a concrete slab …. Again. Everybody gives 3 points to Holly in hopes she gets better.
+Value: 1 point
+
+124 Rainbow unicorn
+If another player has an animal spotter card, they may tame the unicorn and claim 100 points.
+Value: -5 points
+
+125 Author
+You’ve written a book!
+Value: 10 points
+
+126 Animal Spotter
+While this card is in your hand, every time a card with an animal is played, you may take that card for yourself.
+Value: 15 points
+
+127 Animal Spotter
+While this card is in your hand, every time a card with an animal is played, you may take that card for yourself.
+Value: 15 points
+
+128 Animal Spotter
+While this card is in your hand, every time a card with an animal is played, you may take that card for yourself.
+Value: 15 points
+
+129 Animal Spotter
+While this card is in your hand, every time a card with an animal is played, you may take that card for yourself.
+Value: 15 points
+
+130 Animal Spotter
+While this card is in your hand, every time a card with an animal is played, you may take that card for yourself.
+Value: 15 points
+
+127 Witchs Brew
+You are brewing a potion to poison the player after you. Roll a 4 sided dice to decide its effects:
+Gain 5 points from every other player
+Fall asleep and skip their next turn
+Slowness - only receive half the points on their next turn (negative or positive)
+Clumsy, drop all their cards and must pick up new ones in their place
+Value: 4 points
+
+128 Witchs Brew
+You are brewing a potion to poison the player after you. Roll a 4 sided dice to decide its effects:
+Gain 5 points from every other player
+Fall asleep and skip their next turn
+Slowness - only receive half the points on their next turn (negative or positive)
+Clumsy, drop all their cards and must pick up new ones in their place
+Value: 4 points
+
+129 Wikipedia
+In your research you come across some questionable information, but you don’t have time to look for a more reliable source as your assignment is due soon.  Roll a dice, if you get below a 3, the information is correct or the marker wasn’t paying attention and you get 10 points, otherwise you failed the assignment and lose 10 times the number you rolled.
+Value: 1 point
+
+130 washing basket of luck
+The washing basket of luck is here! If you have negative points, inverse them. They are now positive.
+Value: 1 point
+
+131 Cheeky monkey
+The next time someone draws a card numbered less than 50, the monkey will steal it before it can be added to their hand
+Value: -2 points
+
+132 Old laundry basket
+If you have cards that are both animals and negative values, take them, place them in this basket, add up the points you now have an old laundry basket of trash.
+Value: 1 point
+
+133 Lamprey
+It’s so gross you retch just thinking of it…
+Value: -10 points
+
+134 Faithful hound
+If you lose a card to another player, immediately play this card and the faithful hound will retrieve your card for you
+Value: 8 points 
+
+135 The Owl House
+Special delivery: PAIN ​​https://youtu.be/qKqr8febpW0?t=8
+Every other player loses 7 points
+Value: 1 point
+
+136 Antidote 
+Counters the effects of any potions. Discard once used. Pick up an extra card. 
+Value: 2 points
+
+137 Antidote 
+Counters the effects of any potions. Discard once used. Pick up an extra card. 
+Value: 2 points
+
+138 Antidote 
+Counters the effects of any potions. Discard once used. Pick up an extra card. 
+Value: 2 points
+
+139 Antidote 
+Counters the effects of any potions. Discard once used. Pick up an extra card. 
+Value: 2 points
+
+140 Antidote 
+Counters the effects of any potions. Discard once used. Pick up an extra card. 
+Value: 2 points
+
+141 Emma thinks... 
+That dogs are boats and Holly asks a random what sort of cat do you have. If you have card 82 draw again.
+Value: 1
+
+142 Gift basket
+Give someone a basket… It should be the old basket. If they have attacked you in less than 5 turns before double the Value: of the basket. Enjoy this trash dickhead!
+Value: 5 if combo 10 points
+
+143 Giraffe
+You are now so tall you can lick the moon. You are effectively on the moon for 1 turn.
+Value: 6 points (before you reach the moon) 
+
+144 Dream
+You had a weird dream where random things happened, draw an additional random card from the deck.
+Value: 13 points
+
+145 A misplaced pokemon reference
+Gotta catch em all! You think you’re a pokemon trainer and steal a card from every player. But you are still a 10 year old, so you must give one back in return. Basically trade a card for a card with every player. 
+Value: 10 points
+
+146 Summon Dragon
+Set it on someone and it will use its fire breath to burn the top three cards in their hand to cinders.  The fourth one will be singed and worth only 1 point.
+Value: 6 points
+
+147 Mars
+Nicoles dog Mars likes eating everything like Nicoles pizza so if you have the pizza card double the points.
+Value: 0
+
+148 time wizard
+It’s the time wizard Yu-g gain 10 years of life, draw 10 cards, age terribly.
+Value: 10
+
+149 Bug
+There’s a stray semicolon >:
+Value: -50 points
+
+150 fluffy dragon
+Can eat any other dragons in an attempt to show superiority, gain 3 points
+Value: 3
+
+151 Rocks
+Emmas Pet Rocks are so rare but Emma can get more rocks for + 50 ( Only Emma can get +50 points every one else gets +10)
+Value: 1 point
+
+152 Do Re Mi…
+You strain your vocal cords trying to sing high. You are not Julie Andrews, nice try. 
+Value: -3 points
+
+153 Spiky demon dragon
+Immune to fluffy dragons, and instead of breathing fire, will launch a nuke.
+Value: -4 points
+
+154 scorpions are the strongest
+Oh no! A scorpion appears thats like… worth 20 centipedes, put in someones pants do 3 points damage, 20 points psychological damage
+Value: 23
+
+155 Centipede
+It’s scared of the scorpion…. Has no effect unless someone plays a scorpion in the same round, then it gets eaten and you lose 10 points, gain 5 points if youre not eaten
+Value: 0
+
+156 The quack doctor
+He may be a duck or he may be a shrink. Either way, hes a master of sorting out your sanity! Regain any psychological damage points. Feel refreshed! (add 30 points for every divorce)
+Value: 3
+
+157 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+158 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+159 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+160 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+161 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+162 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+163 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+164 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+165 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+166 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+167 Dan Andrews calls for another lockdown
+Lockdown one person on the board for a whole turn. They skip their next turn, but also, no other player may engage them in anything. Any group wide affects are skipped for them.
+Value: 66 points
+
+168 Gladys Berejiklian
+Get out of lockdown! But you did it early and now covid is rampant in your state
+Value: -20 points
+
+169 Gladys Berejiklian
+Get out of lockdown! But you did it early and now covid is rampant in your state
+Value: -20 points
+
+170 Gladys Berejiklian
+Get out of lockdown! But you did it early and now covid is rampant in your state
+Value: -20 points
+
+171 The Fox’s Granddaughter
+The Fox is an old man who loved his grandaughter unfortunately Dan Andrews touched her ass! Bite the player who played the Dan Andrews card and take 1/2 their points as compensation! Dirty letcher
+Value: 0
+
+172 Anastasia Palasczuk
+We were smug because there was no covid but then there was covid but we locked down and now there is no covid
+Value: 17 points
+
+173 Jacinda Ardern
+You are immune to lockdowns if you have this card in your hand. If you use this to prevent being locked down, discard the card.
+Value: 10 points
+
+174 Melbourne
+Melbourne is so fucked up as much as Sydney so if you have this card -10000 points every . For 2 rounds. 
+Value: 1 point
+
+175 Ghost Tour
+You go to the Beechworth Asylum for a ghost tour, the ghost tour will take the next three turns. Each turn you must roll a 20 sided dice, and any roll above 10 summons a ghost, which steals 13 points per ghost. 
+Value: 0
+
+176 Ghost Tour
+You go to the Beechworth Asylum for a ghost tour, the ghost tour will take the next three turns. Each turn you must roll a 20 sided dice, and any roll above 10 summons a ghost, which steals 13 points per ghost. 
+Value: 0
+
+177 Ghost Tour
+You go to the Beechworth Asylum for a ghost tour, the ghost tour will take the next three turns. Each turn you must roll a 20 sided dice, and any roll above 10 summons a ghost, which steals 13 points per ghost. 
+Value: 0
+
+178 Bairnsdale
+You’re out in the bush so you don’t have to be in lockdown.. but you also run out of toilet paper.
+Value: -10 points
+
+179 I aint afraid of no ghost
+Ghosts can’t frighten you! If you use this with the “Ghost tour” card, every ghost you summon will gain you 13 points instead.
+Value: 0
+
+180 I aint afraid of no ghost
+Ghosts can’t frighten you! If you use this with the “Ghost tour” card, every ghost you summon will gain you 13 points instead.
+Value: 0

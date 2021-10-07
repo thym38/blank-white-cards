@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/addons/p5.sound.min.js"></script> -->
+    <!-- <script src="https://vuejs.org/js/vue.js"></script>     -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.12/vue.cjs.min.js" integrity="sha512-2ftG6Hks6q07Ca+h8f4WCFWQAZca6bm1klWMAFGev51hiusd6FFaRT+kFWcj1G2KjFgZrns1CuwR8eA4OA0zLw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    
+    <script src="https://vuejs.org/js/vue.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js" integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.0.1/dist/gsap.min.js"></script> 
+
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="./assets/style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/searchbox.css">
+    <link rel="stylesheet" type="text/css" href="./assets/modal.css">
+
+    <!-- <meta name="viewport" content="width=device-width"> -->
+    <meta charset="utf-8" />
+
+</head>
+
+<body>
+
+    <div id="app">
+        
+        <div v-if="started">
+            <div class="controller">
+                
+                <div class="turns">
+
+                    <button id="show-modal" @click="showModal = true" class="addcard" title="Add card"><i class="far fa-plus-square"></i></button>
+                    
+                    <!-- use the modal component, pass in the prop -->
+                    <transition name="modal">
+                        <modal v-if="showModal" @close="showModal = false">
+
+                            <!--overwrite default content-->
+                            <template v-slot:header >
+                                <h3>Add a new card</h3>
+                            </template>
+
+                            <template v-slot:body>
+                                <form>
+                                    <p>
+                                        Name: <br/>
+                                        <input type="text" v-model="new_card_name">
+                                    </p><br/>
+                                    <p>
+                                        Description: <br/>
+                                        <textarea name="descr" v-model="new_card_descr" cols="40" rows="5"></textarea>
+                                    </p><br/>
+                                    <p>
+                                        Value: <br/>
+                                        <input type="number" v-model="new_card_value">
+                                    </p><br/>
+                                    <p>
+                                        Effects: <br/><br/>
+                                        Manual: <input type="checkbox" v-model="new_card_manual">
+                                        (host must manually perform effects based on the 
+                                        description when this card is played)
+                                    </p><br/>
+                                    <p v-if="!(new_card_manual)">
+                                        <select v-model="new_card_auto">
+                                            <option>one</option>
+                                            <option>two</option>
+                                        </select>
+                                    </p>
+
+                                </form>
+                            </template>
+
+                        </modal>
+                    </transition>
+
+                    <div class="search-box">
+                        <input v-model="message" type="text" class="input-search" placeholder="Find card...">
+                        <button v-on:click="clearSearch" class="btn-search"><i class="fas fa-times"></i></button>
+                    </div>
+
+                    <div 
+                        v-for="acard in filteredCards" 
+                        class="cardlist"
+                        draggable
+                        @dragstart='startDrag($event, acard.id)'> 
+
+                            <div class="title">{{ acard.name }}</div> <div class="point">{{ acard.value }} </div>
+                            <div class="desc">{{ acard.descr }} </div> 
+                    </div>
+
+                    
+                </div>
+            </div>
+
+
+            <div class="board">
+                <player_list
+                    v-for="(player, index) in players"
+                    :key="player.id"
+                    :id="player.id"
+                    :name="player.name"
+                    :score="player.score"
+                    :effects="player.effects"
+                    :host="host"
+                    @selected="select(index)"
+                    @dropped="dropped(player)"
+                    @canceleffect="cancelEffect"
+                   
+                ></player_list>
+    
+                <p> It is {{ whoseTurn }}'s turn</p>
+                <div class="card" v-if="lastPlayed">{{ lastPlayed.name }}</div>
+    
+                <div class="hostMenu" v-if="host">
+                    <p v-if="!selectionMade && allowManualChanges"> Select player(s) to effect... </p>
+    
+                    <p v-if="selectionMade && allowManualChanges"> 
+                        <button type="button" @click='manualDeal'>Deal</button>
+                        <button type="button" @click='addPoint'>Add Point</button>
+                        <button type="button" @click='multiplyPoints'>Multiply Points</button>
+                        <button type="button" @click='lava'>Lava</button>
+                    </p>
+                    <button type="button" @click='finishManualChanges'>Finish Changes</button>
+                </div>
+            
+            </div>
+
+
+
+            <div class="hand">
+                <div class="hand-buffer"> 
+                    <!-- <div class="hand-sticker"> -->
+                        <div class="card" v-for="card in hand" v-on:click="playCard(card)">
+                            
+                            <div class="card-inner">
+                                <p>
+                                    {{ card.name }}                 <br/><br/>
+                                    value: {{ card.value }} points
+                                </p>
+                            </div>
+                            <div class="tooltiptext">{{card.descr}}</div>
+
+                        </div>
+                    <!-- </div> -->
+                </div>    
+            </div>
+
+        </div>
+
+        
+        <div class="entry">
+            <div class="cover">
+                <h1>1000 </h1> <br/> 
+                <h2> Blank White Cards</h2>
+
+                <input type="text" v-model="playerName" placeholder="Enter your name" />
+                <input v-on:click="newRoom()" type="button" value="New Room"/>
+                <input v-on:click="startGame" type="button" value="Start Game"/>
+                <input type="text" v-model="roomCode" placeholder="Enter room code" />
+                <input v-on:click="joinRoom" type="button" value="Join Room"/>
+                
+                <p>
+                    There are only two rules... <br/>
+                    ... every card has a name and a point value ... <br/>
+                    ... go forth and create... <br/><br/>
+                    ... 1000 Blank White Cards! <br/>
+                </p>
+
+                <p v-if="host"> Room Code: {{ roomCode }} </p>
+                <p v-for="player in players"> {{ player }} </p>
+            </div>
+            <i class="fas fa-info-circle about" @click="showAboutModal = true" title="About"></i>
+
+            <transition name="modal">
+                <modal v-if="showAboutModal" @close="showAboutModal = false">
+
+                    <!--overwrite default content-->
+                    <template v-slot:header >
+                        <h3></h3>
+                    </template>
+
+                    <template v-slot:body>
+                        <p>Web game created by Emma Herbold, based on Nathan McQuillen's "1000 Blank White Cards".</p>
+                        <a href="https://www.wikihow.com/Play-1000-Blank-White-Cards" target="_blank">Rules</a> <br/><br/>
+                        <a href="https://eherbold.herokuapp.com/" target="_blank">Folio</a> <br/><br/>
+                        <a href="https://github.com/eher0002" target="_blank">GitHub</a> <br/><br/>
+                    </template>
+
+                </modal>
+            </transition>
+            
+        </div>
+
+    </div>
+ 
+<script src="index.js"></script>
+<script src="Player.js"></script>
+<script src="Card.js"></script>
+
+<script src="throwCards.js"></script>
+</body>
+</html>
