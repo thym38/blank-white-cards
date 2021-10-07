@@ -16,8 +16,10 @@ const Effect = require("./Effect");
 const { loadavg } = require("os");
 let card_data = JSON.parse(data)
 
-let server = app.listen(80);
-console.log('The server is now running at http://localhost/');
+const PORT = process.env.PORT || 80;
+let server = app.listen(PORT);
+// console.log('The server is now running at http://localhost/');
+console.log(`Listening on ${PORT}`);
 app.use(express.static("public"));
 
 
@@ -36,7 +38,7 @@ const herokuoptions = {
         rejectUnauthorized: false
     }
 }
-const pool = new Pool(options);
+const pool = new Pool(herokuoptions);
 io.adapter(createAdapter(pool));
 
 let players = [];
