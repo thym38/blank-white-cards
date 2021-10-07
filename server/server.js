@@ -262,3 +262,5 @@ function cancelEffect(code, player_id, effect_index) {
     this_player.removeEffect(effect_index);
     updateClientPlayers(code, this_game.players)
 }
+
+addCard()
