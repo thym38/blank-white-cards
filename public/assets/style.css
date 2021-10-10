@@ -3,6 +3,7 @@ html, body {
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #262B31;
+    color: #14171C;
 }
 
 h1 {
@@ -24,10 +25,41 @@ h2 {
     z-index: 200;
 }
 
+h4 {
+    color: white;
+}
+
 #app {
     height: 100%;
     width: 100%;
 }
+
+.inputnum {
+    width: 40px;
+}
+
+/* ------------------------ BOOTSTRAP OVERRIDE ------------------------ */
+
+.btn-outline-secondary {
+    color: #788191 !important;
+    border-color: #788191 !important;
+}
+
+
+.btn-outline-secondary:hover {
+    color: white !important;
+    background-color: #403F64 !important;
+    border-color: white !important;
+}
+
+.btn-outline-secondary:focus {
+    box-shadow: none !important;
+}
+
+.btn-outline-light:focus {
+    box-shadow: none !important;
+}
+
 
 /* ------------------------ MENU ------------------------ */
 .entry {
@@ -65,7 +97,7 @@ h2 {
     right: 0;
     margin: 8px;
     font-size: 20px;
-    color: rgba(255, 255, 255, 0.700);
+    color: rgba(255, 255, 255, 0.200);
     z-index: 9999;
     cursor: pointer;
 }
@@ -86,10 +118,17 @@ h2 {
     min-height: 150px;
     background-color: #1A1839;
     display: inline-block;
-    margin: 50px;
+    margin: 20px 0 0 30px;
     color: white;
     overflow: hidden;
     padding: 10px;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; 
 }
 
 .active {
@@ -117,10 +156,16 @@ h2 {
     cursor: pointer;
 }
 
+.last {
+    display: inline-block;
+    transform: translate(0, -20%);
+    margin-left: 10% !important;
+}
+
 /* ------------------------ HOST SIDEBAR ------------------------ */
 
 .hostMenu {
-    width: 25%;
+    width: 300px;
     min-height: 100px;
     background-color: #1A1839;
     display: block;
@@ -131,12 +176,45 @@ h2 {
     position: absolute; */
     box-shadow: 1px 1px 6px 1px #14171C;
     z-index: 800;
-
+    padding: 15px;
 }
 
+.buttonpanel {
+    margin: 30px 30px 30px 0;
+    background-color: #222040;
+    padding: 20px;
+}
+
+.hostinbut {
+    margin: 10px 0 10px 0;
+    display: inline-block;
+}
+
+.hostbut {
+    margin: 10px 0 10px 0;
+    display: block;
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
+
+.tooltip-inner {
+    background-color: white;
+    color: black;
+}
+
+.bs-tooltip-top .tooltip-arrow::before{
+    border-top-color: white !important;
+}
+
+.bs-tooltip-start .tooltip-arrow::before{
+    border-left-color: white !important;
+}
 /* ------------------------ CARD SIDEBAR ------------------------ */
 .controller {
     width: 25%;
+    min-width: 200px;
     height: 100%;
     background-color: #1A1839;
     display: inline-block;
@@ -223,10 +301,10 @@ h2 {
     box-shadow: 3px -2px 6px 1px #14171C;
 }
 
-.hand:hover .hand-buffer {
+/* .hand:hover .hand-buffer {
     height: 430px;
     margin-top:-200px;
-}
+} */
 
 /* https://codeburst.io/how-to-create-horizontal-scrolling-containers-d8069651e9c6 */
 .hand-buffer {
@@ -328,6 +406,27 @@ h2 {
     /* position: absolute;
     top: 20px; */
     height: 150px;
+    text-align: center;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; 
+}
+
+.cardheader {
+    display:inline-block;
+    margin-top: 5%;
+    height: 75%;
+    bottom: 5px;
+
+}
+
+.cardfooter {
+    display:inline-block;
+    font-size: small;
 }
 
 .button1 {
@@ -335,4 +434,12 @@ h2 {
     width: 100px;
     background-color: #1A1839;
     position:absolute;
+}
+
+.discard {
+    font-size: small;
+    display: inline-block;
+    color: rgba(0, 0, 0, 0.3);
+    margin-left: 95px;
+    cursor: pointer;
 }

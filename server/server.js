@@ -18,8 +18,7 @@ let card_data = JSON.parse(data)
 
 const PORT = process.env.PORT || 80;
 let server = app.listen(PORT);
-// console.log('The server is now running at http://localhost/');
-console.log(`Listening on ${PORT}`);
+console.log(`The server is now running at http://localhost`);
 app.use(express.static("public"));
 
 
@@ -32,13 +31,15 @@ const options = {
     password: "password",
     port: 5432,
 }
+
 const herokuoptions = {
     connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false
     }
 }
-const pool = new Pool(herokuoptions);
+
+const pool = new Pool(options);
 io.adapter(createAdapter(pool));
 
 let players = [];
@@ -61,16 +62,18 @@ io.sockets.on("connection", socket => {
 
     // socket.on("newcard", message => addCard(message));
 
+    socket.on("setName", data => setName(data.player_id, data.name));
     socket.on("newRoom", host => newRoom(host, socket));
     socket.on("joinRoom", data => joinRoom(data.code, data.player, socket));
     socket.on("startGame", code => startGame(code))
     socket.on("playedcard", data => cardPlayed(data.code, data.card));
 
     socket.on("manualDeal", data => manualDeal(data.code, data.players));
-    socket.on("addPoint", data => addPoint(data.code, data.players));
+    socket.on("addPoint", data => addPoint(data.code, data.players, data.points));
     socket.on("multiplyPoints", data => multiplyPoints(data.code, data.players));
     socket.on("dropped", data => dropped(data.player_id, data.card_id));
     socket.on("lava", players => lava(players));
+    socket.on("gravity", players => gravity(players));
     
     socket.on("cancelEffect", data => cancelEffect(data.code, data.player_id, data.effect_index));
 
@@ -173,8 +176,8 @@ function cardPlayed(code, card) {
     // get this game
     let this_game = getGame(code);
 
-    // update score
-    this_game.updateScore(card.value);
+    // update score with any card point based effects applied to player
+    this_game.effectScore(card.value);
 
     // need to send updated score before host can make changes
     // io.to(this_game.code).emit("updatePlayers", this_game.players);
@@ -199,6 +202,11 @@ function endTurn(code) {
     updateClientPlayers(this_game.code, this_game.players)
 }
 
+function setName(player_id, name) {
+    let this_player = getPlayer(player_id);
+    this_player.name = name;
+}
+
 function newRoom(host_id , socket) {
     let host = getPlayer(host_id);
     let code = randomize('Aa0', 7);
@@ -216,10 +224,10 @@ function joinRoom(code, player, socket) {
     socket.join(code);
 }
 
-function addPoint(code, player_ids) {
+function addPoint(code, player_ids, points) {
     let this_game = getGame(code);
     for (id in player_ids) {
-        this_game.changeScore(1, player_ids[id]);
+        this_game.changeScore(points, player_ids[id]);
     }
 
     // emit new players list with any changed scores and effects
@@ -244,16 +252,19 @@ function dropped(player_id, card_id) {
 }
 
 function lava(player_ids) {
+    let this_player;
     for (id in player_ids) {
-        addEffect(player_ids[id])
+        this_player = getPlayer(player_ids[id])
+        this_player.addEffect(new Effect(2, 'Lava', -1, -1, null, null))
     }
 }
 
-function addEffect(player_id) {
-    let effect = new Effect(2, 'Lava', -1, -1, null)
-    // let effect = new Effect(1, 'Gravity', -1, null, 0.5)
-    let this_player = getPlayer(player_id)
-    this_player.addEffect(effect)
+function gravity(player_ids) {
+    let this_player;
+    for (id in player_ids) {
+        this_player = getPlayer(player_ids[id])
+        this_player.addEffect(new Effect(1, 'Gravity', -1, null, 0.5, null))
+    }
 }
 
 function cancelEffect(code, player_id, effect_index) {
@@ -262,5 +273,3 @@ function cancelEffect(code, player_id, effect_index) {
     this_player.removeEffect(effect_index);
     updateClientPlayers(code, this_game.players)
 }
-
-addCard()

@@ -1,3 +1,5 @@
+const { time } = require("console");
+
 class Game {
     constructor(code, host_id, host) {
         this.code = code;
@@ -23,12 +25,25 @@ class Game {
         // this.players[this.turn].cards = this.players[this.turn].cards.filter(card => card !== played_card.id)
     }
 
-    updateScore(score_change){
-        this.players[this.turn].score += score_change;
+    updateScore(){
+        let this_player = this.players[this.turn];
+        console.log(this_player, this_player.score)
+        this_player.effects.forEach(effect => this_player.score = effect.applyPointEffect(this_player.score) )
+    
+    }
+
+    // const reducer = (previousValue, currentValue) => previousValue * currentValue;
+
+
+
+    effectScore(score_change) {
+        let this_player = this.players[this.turn];
+        this_player.score += this_player.effects.map(effect => effect.applyCardEffect(effect)).reduce(((prev, curr) => prev*curr), score_change)
+        // this_player.effects.forEach(effect => this_player.score = effect.applyCardEffect(this_player.score, score_change) )
     }
 
     changeScore(score_change, player_id){
-        this.players.filter(player => player.id === player_id)[0].score += score_change;
+        this.players.filter(player => player.id === player_id)[0].score += parseInt(score_change);
     }
 
     drawCard() {
@@ -40,6 +55,9 @@ class Game {
         this.turn = (this.turn + 1) % this.number;
         this.players[this.turn].myturn = true;
 
+        // apply any round point effects ie lava
+        this.updateScore();
+        // update effect duration
         this.players[this.turn].updateEffects();
 
         console.log("it is "+ this.players[this.turn].id + "'s turn");

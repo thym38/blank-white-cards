@@ -34,7 +34,7 @@ var player_list = {
       @drop='onDrop'
       @dragover.prevent
       @dragenter.prevent>
-        <h4>{{ id }}</h4>
+        <h4>{{ name }}</h4>
         <span> Score: {{score}} </span> <br/><br/>
         <span> Effects: </span> <br/>
         <div v-for="(effect, index) in effects" class="effects"> 
@@ -62,8 +62,8 @@ var modal = {
 
                 <div class="modal-footer">
                     <slot name="footer">
-                        <button class="modal-default-button" @click="$emit('close')"> Cancel </button>
-                        <button class="modal-default-button" @click="$emit('close')"> OK </button>
+                        <button @click="$emit('close')" class="btn btn-outline-secondary"> Cancel </button>
+                        <button @click="$emit('close')" class="btn btn-outline-secondary"> OK </button>
                     </slot>
                 </div>
 
@@ -72,12 +72,21 @@ var modal = {
     </div> `
 }
 
+
 var app = new Vue({
     el: '#app',
     components: {
         modal: modal,
         player_list: player_list,
         // draggable: window["vuedraggable"], 
+    },
+
+    directives: {
+        tooltip: {
+            inserted(el, binding) {
+                return new bootstrap.Tooltip(el, {title: binding.value, placement: binding.arg})
+            }
+        }
     },
 
     data: {
@@ -104,9 +113,10 @@ var app = new Vue({
         new_card_auto: 'one',
 
         selected: null,
-        outline_size: 0,
+        addpoints: 0,
         dragging: null,
 
+        toolDeal: 'Deal a random card, you can deal a specific card by dragging it from the card menu on the left',
     },
 
     created() {
@@ -139,7 +149,7 @@ var app = new Vue({
             if (hasTurn.length === 0) {
                 return '';
             } else {
-                return hasTurn[0].id;
+                return hasTurn[0].name;
             }
         },
 
@@ -191,6 +201,10 @@ var app = new Vue({
         removePlayer(playerId) {
             this.players = this.players.filter(player => player.id !== playerId);
             socket.emit("removed", {code: this.roomCode, player: playerId});
+        },
+
+        setName() {
+            socket.emit("setName", {player_id: this.myself, name: this.playerName});
         },
 
         newRoom() {
@@ -264,7 +278,7 @@ var app = new Vue({
         }, 
 
         addPoint() {
-            socket.emit("addPoint", {code: this.roomCode, players: this.selected.map((x, i) => x && this.players[i].id).filter(x => x)})
+            socket.emit("addPoint", {code: this.roomCode, players: this.selected.map((x, i) => x && this.players[i].id).filter(x => x), points: this.addpoints})
         }, 
 
         multiplyPoints() {
@@ -292,9 +306,17 @@ var app = new Vue({
             socket.emit("lava", this.selected.map((x, i) => x && this.players[i].id).filter(x => x))
         },
 
+        gravity() {
+            socket.emit("gravity", this.selected.map((x, i) => x && this.players[i].id).filter(x => x))
+        },
+
         cancelEffect(player, index) {
             socket.emit("cancelEffect", {code: this.roomCode, player_id: player, effect_index: index})
 
+        },
+
+        discard(card) {
+            this.cards = this.cards.filter(card_id => card_id !== parseInt(card.id));
         }
         
     }
