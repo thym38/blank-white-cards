@@ -41,11 +41,9 @@
 
                     <button id="show-modal" @click="showModal = true" class="addcard" title="Add card"><i class="far fa-plus-square"></i></button>
                     
-                    <!-- use the modal component, pass in the prop -->
                     <transition name="modal">
                         <modal v-if="showModal" @close="showModal = false">
 
-                            <!--overwrite default content-->
                             <template v-slot:header >
                                 <h3>Add a new card</h3>
                             </template>
@@ -107,6 +105,7 @@
 
                 <p style="color: white; margin: 20px 0 0 20px"> It is {{ whoseTurn }}'s turn</p>
 
+
                 <player_list
                     v-for="(player, index) in players"
                     :key="player.id"
@@ -132,8 +131,6 @@
                         <input type="number" v-model="addpoints" class="inputnum">
                         <button type="button" @click='addPoint' class="btn btn-outline-light hostinbut">Add Points</button> <br/>
 
-                        <!-- <button type="button" @click='multiplyPoints'>Multiply Points</button> -->
-
                         <div class="dropdown">
                             <button class="btn btn-outline-light dropdown-toggle hostbut" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Effects</button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -150,8 +147,7 @@
 
 
             <div class="hand">
-                <div class="hand-buffer"> 
-                    <!-- <div class="hand-sticker"> -->
+                <div class="hand-buffer" > 
                         <div class="card" v-for="card in hand" v-on:click="playCard(card)" v-tooltip:top="card">
                             <i class="fas fa-times discard" @click.stop="discard(card)"></i>
                             <div class="card-inner">
@@ -162,7 +158,6 @@
                             <!-- <div class="tooltiptext">{{card.descr}}</div> -->
 
                         </div>
-                    <!-- </div> -->
                 </div>    
             </div>
 
@@ -197,7 +192,6 @@
         <transition name="modal">
             <modal v-if="showAboutModal" @close="showAboutModal = false">
 
-                <!--overwrite default content-->
                 <template v-slot:header >
                     <h3></h3>
                 </template>

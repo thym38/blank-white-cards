@@ -162,10 +162,10 @@ var app = new Vue({
         },
 
         hand() {
-            if (this.cards) {
+            if (this.cards.length > 0 && this.allCards.length > 0) {
                 return this.cards.map(card => this.allCards[card-1])
             } else {
-                return ''
+                return []
             }
         }, 
 
