@@ -84,7 +84,15 @@ var app = new Vue({
     directives: {
         tooltip: {
             inserted(el, binding) {
-                return new bootstrap.Tooltip(el, {title: binding.value, placement: binding.arg})
+                if (binding.value){
+                    if (binding.value.descr) {
+                        return new bootstrap.Tooltip(el, {title: binding.value.descr, placement: binding.arg})
+                    }
+                    return new bootstrap.Tooltip(el, {title: binding.value, placement: binding.arg})
+                } else {
+                    return new bootstrap.Tooltip(el, {title: '', placement: binding.arg})
+
+                }
             }
         }
     },

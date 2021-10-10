@@ -118,7 +118,6 @@
                     @selected="select(index)"
                     @dropped="dropped(player)"
                     @canceleffect="cancelEffect"
-                   
                 ></player_list>
 
                 <div class="card last" v-if="lastPlayed">{{ lastPlayed.name }}</div>
@@ -153,7 +152,7 @@
             <div class="hand">
                 <div class="hand-buffer"> 
                     <!-- <div class="hand-sticker"> -->
-                        <div class="card" v-for="card in hand" v-on:click="playCard(card)" v-tooltip:top="card.descr">
+                        <div class="card" v-for="card in hand" v-on:click="playCard(card)" v-tooltip:top="card">
                             <i class="fas fa-times discard" @click.stop="discard(card)"></i>
                             <div class="card-inner">
                                 <span class='cardheader'>{{ card.name }}</span>                 
