@@ -38,7 +38,7 @@ const herokuoptions = {
     }
 }
 
-const pool = new Pool(options);
+const pool = new Pool(herokuoptions);
 io.adapter(createAdapter(pool));
 
 let players = [];

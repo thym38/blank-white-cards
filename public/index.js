@@ -255,7 +255,6 @@ var app = new Vue({
             var div = document.getElementsByClassName('entry')[0];
             div.parentNode.removeChild(div);
             this.started = true;
-            console.log('start', this.players)
         },
 
         getHand(cards) {
@@ -263,7 +262,6 @@ var app = new Vue({
         },
 
         turnHandler(players) {
-            console.log(players)
             this.players = players;
         },
 
