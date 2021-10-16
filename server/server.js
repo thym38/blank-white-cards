@@ -13,7 +13,6 @@ let Game = require("./Game");
 // all cards data for db
 var data = require('../cards/result');
 const Effect = require("./Effect");
-const { loadavg } = require("os");
 let card_data = JSON.parse(data)
 
 const PORT = process.env.PORT || 80;
@@ -39,7 +38,7 @@ const herokuoptions = {
     }
 }
 
-const pool = new Pool(herokuoptions);
+const pool = new Pool(options);
 io.adapter(createAdapter(pool));
 
 let players = [];
@@ -51,12 +50,14 @@ io.sockets.on("connection", socket => {
     console.log(`New connection ${socket.id}`);
     players.push(new Player(socket.id));
 
-    socket.on("disconnect", () => {
-        io.sockets.emit("disconnected", socket.id);
-        players = players.filter(player => player.id !== socket.id);
-        console.log(`${socket.id} disconnected`);
-    });
-    socket.on("removed", data => remove(data.code, data.player));
+    // socket.on("disconnect", () => {
+    //     io.sockets.emit("disconnected", socket.id);
+    //     players = players.filter(player => player.id !== socket.id);
+    //     console.log(`${socket.id} disconnected`);
+    // });
+    socket.on("disconnecting", () => remove(socket.id, socket.rooms));
+    socket.on("disconnect", () => console.log(`${socket.id} disconnected`));
+    // socket.on("removed", data => remove(data.code, data.player));
 
     // socket.on("test", message => console.log("test " + message));
 
@@ -74,6 +75,8 @@ io.sockets.on("connection", socket => {
     socket.on("dropped", data => dropped(data.player_id, data.card_id));
     socket.on("lava", players => lava(players));
     socket.on("gravity", players => gravity(players));
+    socket.on("married", data => married(data.id_a, data.id_b));
+    
     
     socket.on("cancelEffect", data => cancelEffect(data.code, data.player_id, data.effect_index));
 
@@ -103,11 +106,23 @@ function getPlayer(player_id) {
 //     }
 // }
 
-function remove(code, playerId) {
-    let this_game = getGame(code);
-    if (this_game) {
-        this_game.players = this_game.players.filter(player => player.id !== playerId);
+function remove(socketid, rooms) {
+    let inroom = [...rooms].filter(room => room !== socketid)
+
+    if (inroom.length > 0){
+        let this_game = getGame(inroom[0]);
+
+        let res = this_game.removePlayer(socketid);
+
+        if (!res) {
+            games = games.filter(game => game.code !== inroom[0])
+            return false
+        }
+
+        updateClientPlayers(inroom[0], this_game.players)
     }
+
+    players = players.filter(player => player.id !== socket.id);
 }
 
 function startGame(code) {
@@ -222,6 +237,7 @@ function joinRoom(code, player, socket) {
     this_game.players.push(this_player);
 
     socket.join(code);
+    updateClientPlayers(code, this_game.players)
 }
 
 function addPoint(code, player_ids, points) {
@@ -255,7 +271,7 @@ function lava(player_ids) {
     let this_player;
     for (id in player_ids) {
         this_player = getPlayer(player_ids[id])
-        this_player.addEffect(new Effect(2, 'Lava', -1, -1, null, null))
+        this_player.addEffect(new Effect(2, 'Lava', -1, -1, null, null, null))
     }
 }
 
@@ -263,8 +279,15 @@ function gravity(player_ids) {
     let this_player;
     for (id in player_ids) {
         this_player = getPlayer(player_ids[id])
-        this_player.addEffect(new Effect(1, 'Gravity', -1, null, 0.5, null))
+        this_player.addEffect(new Effect(1, 'Gravity', -1, null, 0.5, null, null))
     }
+}
+
+function married(id_a, id_b) {
+    let a_player = getPlayer(id_a);
+    let b_player = getPlayer(id_b);
+    a_player.addEffect(new Effect(1, 'Married', 3, null, 0.5, null, id_b))
+    b_player.addEffect(new Effect(1, 'Married', 3, null, 0.5, null, id_a))
 }
 
 function cancelEffect(code, player_id, effect_index) {

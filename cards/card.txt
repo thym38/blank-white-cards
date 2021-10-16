@@ -62,6 +62,7 @@ Value: 4 points
 15 Gallant knight
 When you play this card, everyone else gains 3 points
 Value: 5 points
+
 16 Plastic surgery
 Upgrade the Value: of all the cards in your hand by 2 points
 Value: -5

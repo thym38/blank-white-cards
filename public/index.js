@@ -35,15 +35,17 @@ var player_list = {
       @dragover.prevent
       @dragenter.prevent>
         <h4>{{ name }}</h4>
-        <span> Score: {{score}} </span> <br/><br/>
-        <span> Effects: </span> <br/>
+        <span> Score: {{score}} </span> <br/>
+        
         <div v-for="(effect, index) in effects" class="effects"> 
-            <span>{{effect.name}} </span>
+            <span>{{effect.name}} ({{effect.active_turns}}) </span>
             <i class="fas fa-times cross" @click.stop="cancel(index)"></i>
         </div>
       </div>
     `
   }
+
+//   <span v-if="effects.length !== 0"> Effects: </span> <br/>
 
 //  script for modal from https://codepen.io/team/Vue/pen/mdPoyvv
 var modal = {
@@ -104,6 +106,10 @@ var app = new Vue({
         message: '',
         roomCode: '',
         playerName: '',
+        named: false,
+        join: false,
+        joined: false,
+        maderoom: false,
         host: false,
         started: false,
         allowManualChanges: false, 
@@ -130,7 +136,7 @@ var app = new Vue({
     created() {
         socket.on("connect", () => this.myself = socket.id)
         // socket.on("heartbeat", players => this.updateGame(players));
-        socket.on("disconnected", playerId => this.removePlayer(playerId));
+        // socket.on("disconnected", playerId => this.removePlayer(playerId));
         socket.on("newRoomCode", code => this.madeNewRoom(code));
         socket.on("start", players => this.onStart(players));
         socket.on("allCards", cards => this.getAllCards(cards));
@@ -206,12 +212,13 @@ var app = new Vue({
             return false;
         },
 
-        removePlayer(playerId) {
-            this.players = this.players.filter(player => player.id !== playerId);
-            socket.emit("removed", {code: this.roomCode, player: playerId});
-        },
+        // removePlayer(playerId) {
+        //     this.players = this.players.filter(player => player.id !== playerId);
+        //     socket.emit("removed", {code: this.roomCode, player: playerId});
+        // },
 
         setName() {
+            this.named = true;
             socket.emit("setName", {player_id: this.myself, name: this.playerName});
         },
 
@@ -227,10 +234,12 @@ var app = new Vue({
             }
             this.requestingRoom = false;
             navigator.clipboard.writeText(this.roomCode);
+            this.maderoom = true;
         },
 
         joinRoom() {
             socket.emit("joinRoom", {code: this.roomCode, player: this.myself});
+            this.joined = true;
         },
 
         startGame() {
@@ -254,6 +263,7 @@ var app = new Vue({
         },
 
         turnHandler(players) {
+            console.log(players)
             this.players = players;
         },
 
@@ -317,6 +327,13 @@ var app = new Vue({
 
         gravity() {
             socket.emit("gravity", this.selected.map((x, i) => x && this.players[i].id).filter(x => x))
+        },
+
+        married() {
+            let both = this.selected.map((x, i) => x && this.players[i].id).filter(x => x);
+            if (both.length === 2) {
+                socket.emit("married", {id_a: both[0], id_b: both[1]})
+            }
         },
 
         cancelEffect(player, index) {

@@ -136,6 +136,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                               <li><span class="dropdown-item" @click='lava'>Lava</span></li>
                               <li><span class="dropdown-item" @click='gravity'>Gravity</span></li>
+                              <li><span class="dropdown-item" @click='married'>Married</span></li>
                             </ul>
                         </div>
                     </div>
@@ -166,25 +167,38 @@
         
         <div class="entry">
             <div class="cover">
+
+                <h3>
+                    There are only two rules. <br/>
+                    Each card has a name and a point value... <br/>
+                    ...go forth and create... <br/><br/>
+                </h3>
+
                 <h1>1000 </h1> <br/> 
                 <h2> Blank White Cards</h2>
 
-                <input type="text" v-model="playerName" placeholder="Enter your name" />
-                <input v-on:click="setName" type="button" value="OK" class="btn btn-outline-secondary"/>
-                <input v-on:click="newRoom()" type="button" value="New Room" class="btn btn-outline-secondary"/>
-                <input v-on:click="startGame" type="button" value="Start Game" class="btn btn-outline-secondary"/>
-                <input type="text" v-model="roomCode" placeholder="Enter room code" />
-                <input v-on:click="joinRoom" type="button" value="Join Room" class="btn btn-outline-secondary"/>
+                <div v-if="!named">
+                    <input type="text" v-model="playerName" placeholder="Enter your name" maxlength="20"/>
+                    <input v-on:click="setName" type="button" value="OK" class="btn btn-outline-secondary"/>
+                </div>
+                <div v-if="named && !maderoom && !join">
+                    <input v-on:click="newRoom()" type="button" value="New Room" class="btn btn-outline-secondary"/>
+                    <input v-on:click="join=true" type="button" value="Join Room" class="btn btn-outline-secondary"/>
+                </div>
+                <div v-if="maderoom">
+                    <input v-on:click="startGame" type="button" value="Start Game" class="btn btn-outline-secondary"/>
+                </div>
+                <div v-if="join && !joined">
+                    <input type="text" v-model="roomCode" placeholder="Enter room code" maxlength="7"/>
+                    <input v-on:click="joinRoom" type="button" value="Join Room" class="btn btn-outline-secondary"/>
+                </div>
+                <div v-if="joined">
+                    <h5>Waiting for your host to start the game...</h5>
+                </div>
                 
-                <p>
-                    There are only two rules... <br/>
-                    ... every card has a name and a point value ... <br/>
-                    ... go forth and create... <br/><br/>
-                    ... 1000 Blank White Cards! <br/>
-                </p>
 
-                <p v-if="host"> Room Code: {{ roomCode }} </p>
-                <p v-for="player in players"> {{ player }} </p>
+                <h5 v-if="host"> Room Code: {{ roomCode }} </h5>
+                <h5 v-if="players.length > 0">Players: {{ players.reduce((a, b) => a.name+ ', ' + b.name) }} </h5>
             </div>
         </div>
 

@@ -5,7 +5,7 @@ function cards() {
     var element = document.getElementsByClassName("entry")[0];
     
     // for (let i=0; i<100; i++){
-    for (let i=0; i<10; i++){
+    for (let i=0; i<20; i++){
         tag = document.createElement("div");
         tag.classList.add('fallcard');
         tag.setAttribute("id", "c"+String(i));

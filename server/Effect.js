@@ -1,5 +1,5 @@
 class Effect {
-    constructor(id, name, duration, points, card_points, multiplier) {
+    constructor(id, name, duration, points, card_points, multiplier, partner) {
       this.id = id;
       this.name = name;
       this.duration = duration;
@@ -8,6 +8,7 @@ class Effect {
       this.points = points;             // add/subtract constant points per round
       this.card_points = card_points;   // multiply/divide points of any card played
       this.multiplier = multiplier;
+      this.effectPartner = partner;
     }
 
     activate() {
@@ -24,7 +25,6 @@ class Effect {
 
     applyPointEffect(player_score) {
         if (this.points) {
-            console.log(player_score, 'new', player_score + this.points )
             return player_score + this.points;
         } 
         return player_score

@@ -26,6 +26,10 @@ class Player {
       this.effects.splice(index, 1)
     }
 
+    removeSpecificEffect(effect_id) {
+      this.effects = this.effects.filter(eff => eff !== effect_id)
+    }
+
   }
   
   module.exports = Player;

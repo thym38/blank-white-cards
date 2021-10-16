@@ -1,5 +1,3 @@
-const { time } = require("console");
-
 class Game {
     constructor(code, host_id, host) {
         this.code = code;
@@ -10,6 +8,14 @@ class Game {
         // this.effects = [];       each player instead??
         this.turn = 1;
         this.totalCards = 182; // default
+    }
+
+    getPlayer(player_id) {
+        for (player in this.players) {
+            if (this.players[player].id === player_id) {
+                return this.players[player];
+            }
+        }
     }
 
     startGame() {
@@ -27,19 +33,23 @@ class Game {
 
     updateScore(){
         let this_player = this.players[this.turn];
-        console.log(this_player, this_player.score)
         this_player.effects.forEach(effect => this_player.score = effect.applyPointEffect(this_player.score) )
-    
     }
 
     // const reducer = (previousValue, currentValue) => previousValue * currentValue;
 
-
-
     effectScore(score_change) {
+        let score_effect = 1;
         let this_player = this.players[this.turn];
-        this_player.score += this_player.effects.map(effect => effect.applyCardEffect(effect)).reduce(((prev, curr) => prev*curr), score_change)
-        // this_player.effects.forEach(effect => this_player.score = effect.applyCardEffect(this_player.score, score_change) )
+        // this_player.score += this_player.effects.map(effect => effect.applyCardEffect()).reduce(((prev, curr) => prev*curr), score_change)
+
+        for (let effect of this_player.effects) {
+            score_effect *= effect.applyCardEffect();
+            if (effect.effectPartner) {
+                this.getPlayer(effect.effectPartner).score += score_change * effect.applyCardEffect();
+            }
+        }
+        this_player.score += score_change * score_effect;
     }
 
     changeScore(score_change, player_id){
@@ -61,6 +71,26 @@ class Game {
         this.players[this.turn].updateEffects();
 
         console.log("it is "+ this.players[this.turn].id + "'s turn");
+    }
+
+    removePlayer(playerid) {
+        let curr = this.currentPlayer()
+        this.players = this.players.filter(player => player.id !== playerid);
+        this.number = this.players.length;
+        
+        if (this.number > 0) {
+            if (curr.id === playerid) { 
+                this.turn = this.turn % this.number;
+            } else {
+                this.turn = this.players.indexOf(curr)
+            }
+        
+            this.players[this.turn].myturn = true;
+            console.log("it is "+ this.players[this.turn].id + "'s turn");
+            return true
+        } else {
+            return false
+        }    
     }
 
     currentPlayer() {
