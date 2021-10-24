@@ -38,7 +38,7 @@ const herokuoptions = {
     }
 }
 
-const pool = new Pool(herokuoptions);
+const pool = new Pool(options);
 io.adapter(createAdapter(pool));
 
 let players = [];
@@ -76,8 +76,12 @@ io.sockets.on("connection", socket => {
     socket.on("lava", players => lava(players));
     socket.on("gravity", players => gravity(players));
     socket.on("married", data => married(data.id_a, data.id_b));
-    
-    
+    socket.on("backwards", players => backwards(players));
+    socket.on("goblin", players => goblin(players));
+    socket.on("melbourne", players => melbourne(players));
+    socket.on("stickynet", players => stickynet(players));
+    socket.on("internet", players => internet(players));
+
     socket.on("cancelEffect", data => cancelEffect(data.code, data.player_id, data.effect_index));
 
     socket.on("finishManualChanges", code => endTurn(code));    
@@ -89,6 +93,7 @@ function getGame(room) {
             return games[game];
         }
     }
+    return false;
 }
 
 function getPlayer(player_id) {
@@ -234,10 +239,14 @@ function newRoom(host_id , socket) {
 function joinRoom(code, player, socket) {
     let this_player = getPlayer(player);
     let this_game = getGame(code);
-    this_game.players.push(this_player);
+    if (this_game) {
+        this_game.players.push(this_player);
 
-    socket.join(code);
-    updateClientPlayers(code, this_game.players)
+        socket.join(code);
+        updateClientPlayers(code, this_game.players)
+    } else {
+        io.to(player).emit("badJoin");
+    }
 }
 
 function addPoint(code, player_ids, points) {
@@ -271,7 +280,7 @@ function lava(player_ids) {
     let this_player;
     for (id in player_ids) {
         this_player = getPlayer(player_ids[id])
-        this_player.addEffect(new Effect(2, 'Lava', -1, -1, null, null, null))
+        this_player.addEffect(new Effect(2, 'Lava', -1, 1, -1, null, null, null))
     }
 }
 
@@ -279,15 +288,55 @@ function gravity(player_ids) {
     let this_player;
     for (id in player_ids) {
         this_player = getPlayer(player_ids[id])
-        this_player.addEffect(new Effect(1, 'Gravity', -1, null, 0.5, null, null))
+        this_player.addEffect(new Effect(1, 'Gravity', -1, 1, null, 0.5, null, null))
     }
 }
 
 function married(id_a, id_b) {
     let a_player = getPlayer(id_a);
     let b_player = getPlayer(id_b);
-    a_player.addEffect(new Effect(1, 'Married', 3, null, 0.5, null, id_b))
-    b_player.addEffect(new Effect(1, 'Married', 3, null, 0.5, null, id_a))
+    a_player.addEffect(new Effect(3, 'Married', 3, 1, null, 0.5, null, id_b))
+    b_player.addEffect(new Effect(3, 'Married', 3, 1, null, 0.5, null, id_a))
+}
+
+function backwards(player_ids) {
+    let this_player;
+    for (id in player_ids) {
+        this_player = getPlayer(player_ids[id])
+        this_player.addEffect(new Effect(4, 'Backwards Land', -1, 1, null, -1, null, null))
+    }
+}
+
+function goblin(player_ids) {
+    let this_player;
+    for (id in player_ids) {
+        this_player = getPlayer(player_ids[id])
+        this_player.addEffect(new Effect(5, 'Annoying Goblin', -1, 1, -2, null, null, null))
+    }
+}
+
+function melbourne(player_ids) {
+    let this_player;
+    for (id in player_ids) {
+        this_player = getPlayer(player_ids[id])
+        this_player.addEffect(new Effect(6, 'Melbourne', 2, 1, -10000, null, null, null))
+    }
+}
+
+function stickynet(player_ids) {
+    let this_player;
+    for (id in player_ids) {
+        this_player = getPlayer(player_ids[id])
+        this_player.addEffect(new Effect(7, 'Sticky Net', -1, 1, -1, null, null, null))
+    }
+}
+
+function internet(player_ids) {
+    let this_player;
+    for (id in player_ids) {
+        this_player = getPlayer(player_ids[id])
+        this_player.addEffect(new Effect(8, "Ditto's Internet", -1, 2, -5, null, null, null))
+    }
 }
 
 function cancelEffect(code, player_id, effect_index) {

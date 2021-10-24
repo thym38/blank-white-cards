@@ -103,10 +103,15 @@
 
             <div class="board">
 
-                <p style="color: white; margin: 20px 0 0 20px"> It is {{ whoseTurn }}'s turn</p>
+                <div class="discardPile">
+                    <div class="cardBox">
+                        <div class="card last" v-if="lastPlayed">{{ lastPlayed.name }}</div>
+                    </div>
+                    <p class='whoseturn'> It is {{ whoseTurn }}'s turn</p>
+                </div>
 
-
-                <player_list
+                <div class="playerMenu">
+                    <player_list
                     v-for="(player, index) in players"
                     :key="player.id"
                     :id="player.id"
@@ -117,10 +122,9 @@
                     @selected="select(index)"
                     @dropped="dropped(player)"
                     @canceleffect="cancelEffect"
-                ></player_list>
+                    ></player_list>
+                </div>
 
-                <div class="card last" v-if="lastPlayed">{{ lastPlayed.name }}</div>
-    
                 <div class="hostMenu" v-if="host">
                     <h4>Manual changes:</h4>
                     <p v-if="!selectionMade && allowManualChanges" style="color: white"> Select player(s) to effect... </p>
@@ -134,9 +138,14 @@
                         <div class="dropdown">
                             <button class="btn btn-outline-light dropdown-toggle hostbut" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Effects</button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                              <li><span class="dropdown-item" @click='lava'>Lava</span></li>
-                              <li><span class="dropdown-item" @click='gravity'>Gravity</span></li>
+                              <li><span class="dropdown-item" @click="effect('lava')">Lava</span></li>
+                              <li><span class="dropdown-item" @click="effect('gravity')">Gravity</span></li>
                               <li><span class="dropdown-item" @click='married'>Married</span></li>
+                              <li><span class="dropdown-item" @click="effect('backwards')">Backwards Land</span></li>
+                              <li><span class="dropdown-item" @click="effect('goblin')">Annoying Goblin</span></li>
+                              <li><span class="dropdown-item" @click="effect('melbourne')">Melbourne</span></li>
+                              <li><span class="dropdown-item" @click="effect('stickynet')">Sticky Net</span></li>
+                              <li><span class="dropdown-item" @click="effect('internet')">Ditto's Internet</span></li>
                             </ul>
                         </div>
                     </div>
@@ -149,7 +158,7 @@
 
             <div class="hand">
                 <div class="hand-buffer" > 
-                        <div class="card" v-for="card in hand" v-on:click="playCard(card)" v-tooltip:top="card">
+                        <div class="card" v-for="(card, index) in hand" v-on:click="playCard(card, index)" v-tooltip:top="card">
                             <i class="fas fa-times discard" @click.stop="discard(card)"></i>
                             <div class="card-inner">
                                 <span class='cardheader'>{{ card.name }}</span>                 
@@ -198,7 +207,7 @@
                 
 
                 <h5 v-if="host"> Room Code: {{ roomCode }} </h5>
-                <h5 v-if="players.length > 0">Players: {{ players.reduce((a, b) => a.name+ ', ' + b.name) }} </h5>
+                <h5 v-if="players.length > 0">Players: {{ players.reduce((a, b) => ({name: a.name+ ', ' + b.name})).name }} </h5>
             </div>
         </div>
 

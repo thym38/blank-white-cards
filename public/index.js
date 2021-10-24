@@ -138,6 +138,7 @@ var app = new Vue({
         // socket.on("heartbeat", players => this.updateGame(players));
         // socket.on("disconnected", playerId => this.removePlayer(playerId));
         socket.on("newRoomCode", code => this.madeNewRoom(code));
+        socket.on("badJoin", () => this.badJoin());
         socket.on("start", players => this.onStart(players));
         socket.on("allCards", cards => this.getAllCards(cards));
         socket.on("deal", hand => this.getHand(hand));
@@ -242,6 +243,10 @@ var app = new Vue({
             this.joined = true;
         },
 
+        badJoin() {
+            this.joined = false;
+        },
+
         startGame() {
             socket.emit("startGame", this.roomCode);
         },
@@ -270,10 +275,12 @@ var app = new Vue({
         },
 
         // when this player plays a card by clicking on it
-        playCard(played_card) {
+        playCard(played_card, index) {
             if (this.getMe().myturn) {
                 socket.emit("playedcard", {code: this.roomCode, card: played_card})
-                this.cards = this.cards.filter(card => card !== parseInt(played_card.id))
+                let tool = document.getElementsByClassName("tooltip")[0];
+                tool.classList.remove('show');
+                this.cards.splice(index, 1)
             }
         },
 
@@ -319,12 +326,8 @@ var app = new Vue({
             this.dragging = null;
         },
 
-        lava() {
-            socket.emit("lava", this.selected.map((x, i) => x && this.players[i].id).filter(x => x))
-        },
-
-        gravity() {
-            socket.emit("gravity", this.selected.map((x, i) => x && this.players[i].id).filter(x => x))
+        effect(name){
+            socket.emit(name, this.selected.map((x, i) => x && this.players[i].id).filter(x => x))
         },
 
         married() {

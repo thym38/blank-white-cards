@@ -131,6 +131,38 @@ h5 {
     box-shadow: inset 2px -3px 6px 1px #14171c;
 }
 
+.discardPile {
+    width: 200px;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+}
+
+.cardBox {
+    background-color: #1A1839;
+    border: 2px solid #14171c ;
+    box-shadow: 2px -3px 6px 1px #14171c;
+    height: 220px;
+    width: 160px;
+    position: absolute;
+    margin: 20px 0 0 20px;
+}
+
+.whoseturn {
+    color: white; 
+    margin: 200% 0 50px 20px;
+    position: relative;
+    bottom: 0;
+}
+
+.playerMenu {
+    width: 75%;
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+}
+
 .player {
     width: 150px;
     min-height: 150px;
@@ -178,8 +210,9 @@ h5 {
 
 .last {
     display: inline-block;
-    transform: translate(0, -20%);
-    margin-left: 10% !important;
+    /* transform: translate(0, -20%); */
+    margin-left: 15px !important;
+    margin-top: 15px !important;
 }
 
 /* ------------------------ HOST SIDEBAR ------------------------ */
